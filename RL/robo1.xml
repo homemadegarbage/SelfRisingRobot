@@ -1,0 +1,92 @@
+<mujoco model="robo1">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+
+  <option timestep="0.001" gravity="0 0 -9.81" integrator="implicitfast"/>
+
+  <asset>
+    <mesh name="ATOM" file="ATOM.stl"/>
+    <mesh name="foot" file="foot.stl"/>
+    <mesh name="servo1" file="servo1.stl"/>
+    <mesh name="arm1" file="arm1.stl"/>
+    <mesh name="servo2" file="servo2.stl"/>
+    <mesh name="arm2" file="arm2.stl"/>
+  </asset>
+
+  <default>
+    <joint type="hinge" limited="true" range="-1.57079632679 1.57079632679"/>
+    <position ctrllimited="true" ctrlrange="-1.57079632679 1.57079632679"
+              forcelimited="true" forcerange="-1.0 1.0"
+              kp="0.5" kv="0.04"/>
+  </default>
+
+  <worldbody>
+    <light name="light1" pos="1 0 0" dir="0 0 -1" directional="true"/>
+    <camera name="front" pos="0.22 -0.45 0.20" xyaxes="1 0 0 0 0.35 1"/>
+
+    <body name="foot" pos="0 0 0.0">
+      <joint type="free"/>
+      <inertial pos="0.079759 -0.079713 0.078911" mass="0.017628"
+                fullinertia="7.818e-6 5.908792e-6 1.1153122e-5 -4.3788e-8 -4.37317e-7 1.1931e-8"/>
+      <geom type="mesh" mesh="foot" rgba="1 0.45 0.45 1"/>
+      <geom name="foot_collision" type="box" pos="0.00829 0.00365 -0.00155"
+            size="0.02131 0.03100 0.03748" contype="0" conaffinity="0" rgba="1 0.45 0.45 0"/>
+
+      <body name="ATOM" pos="0 0 0">
+        <inertial pos="0.07810 -0.10035 0.084206" mass="0.007"
+                  diaginertia="4.34538e-7 4.34538e-7 6.40468e-7"/>
+        <geom type="mesh" mesh="ATOM" rgba="1 1 1 1"/>
+        <geom name="atom_collision" type="box" pos="0 0 0"
+              size="0.00700 0.01180 0.01180" contype="0" conaffinity="0" rgba="1 1 1 0"/>
+      </body>
+
+      <body name="servo1" pos="0 0 0">
+        <inertial pos="0.081005 -0.079 0.094111" mass="0.011"
+                  fullinertia="6.54478e-7 1.01173e-6 6.17122e-7 -2.36801e-16 1.78456e-8 8.39085e-17"/>
+        <geom type="mesh" mesh="servo1" rgba="0.5 0.5 0.5 1"/>
+        <geom name="servo1_collision" type="box" pos="0 -0.00028 0.00036"
+              size="0.00600 0.01570 0.01670" contype="0" conaffinity="0" rgba="0.5 0.5 0.5 0"/>  
+      </body>
+
+
+      <body name="arm1" pos="0 0 0">
+        <joint name="servo1_joint" axis="1 0 0" pos="0.06070 -0.079 0.099606"
+               damping="0.02" armature="0.0001"/>
+        <inertial pos="0.077944 -0.07521 0.12069" mass="0.011444" 
+                fullinertia="2.729019e-6 4.042083e-6 2.347159e-6 -1.3415e-8 -7.1469e-8 -5.00723e-7"/>
+        <geom type="mesh" mesh="arm1" rgba="1 0.45 0.45 1"/>
+        <geom name="arm1_collision" type="box" pos="0.00053 0.00003 0.00274"
+              size="0.01366 0.02253 0.03257" contype="0" conaffinity="0" rgba="1 0.45 0.45 0"/>
+
+        <body name="servo2" pos="0 0 0">
+          <inertial pos="0.07810 -0.076095 0.139111" mass="0.011" 
+                fullinertia="1.01173e-6 6.54478e-7 6.17122e-7 2.36801e-16 -8.39085e-17 1.78456e-8"/>
+          <geom type="mesh" mesh="servo2" rgba="0.5 0.5 0.5 1"/>
+          <geom name="servo2_collision" type="box" pos="0 0.00028 0.00036"
+                size="0.00600 0.01570 0.01670" contype="0" conaffinity="0" rgba="0.5 0.5 0.5 0"/>  
+
+          <body name="arm2" pos="0 0 0">
+            <joint name="servo2_joint" axis="0 1 0" pos="0.07810 -0.09640 0.144606"
+                   damping="0.02" armature="0.0001"/>
+            <inertial pos="0.07810 -0.079112 0.189317" mass="0.021622" 
+                    fullinertia="1.9417087e-5 1.7670681e-5 2.307976e-6 0 3.2e-11 -1.07968e-7"/>
+            <geom type="mesh" mesh="arm2" rgba="1 0.45 0.45 1"/>
+            <geom name="arm2_collision" type="box" pos="0 -0.00040 0.00975"
+                  size="0.00625 0.02250 0.05202" contype="0" conaffinity="0" rgba="1 0.45 0.45 0"/>
+          </body>
+
+        </body>
+      </body>
+
+    </body>
+
+
+    <geom name="ground_collision" type="plane" size="5 5 0.1" pos="0 0 0" rgba="0.0 0.5 0.0 0"/>
+    <geom name="ground_visual" type="plane" size="5 5 0.1" pos="0 0 -0.008"
+          contype="0" conaffinity="0" rgba="0.0 0.5 0.0 1"/>
+  </worldbody>
+
+  <actuator>
+    <position name="servo1_pos" joint="servo1_joint"/>
+    <position name="servo2_pos" joint="servo2_joint"/>
+  </actuator>
+</mujoco>
