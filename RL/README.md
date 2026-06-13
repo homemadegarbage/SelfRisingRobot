@@ -53,23 +53,31 @@ python eval_robo1_policy.py
 
 ```powershell
 python pretrain_robo1_from_scripted.py
+```
+
+これにより `robo1_getup_ppo.zip` が生成されます。
 
 続けてPPOで追加学習します。
 
+```powershell
 python train_robo1.py --model-in robo1_getup_ppo.zip --timesteps 200000 --n-envs 6 --model-out robo1_getup_ppo
+```
 
-ゼロからPPO学習する場合は --model-in を省略します。
+ゼロからPPO学習する場合は `--model-in` を省略します。
 
+```powershell
 python train_robo1.py --timesteps 200000 --n-envs 6 --model-out robo1_getup_ppo
+```
 
 ## Export for Arduino
 
-学習済みモデルから policy_network.h を生成します。
+学習済みモデルから `policy_network.h` を生成します。
 
+```powershell
 python export_policy_header.py robo1_getup_ppo.zip -o policy_network.h
+```
 
-生成した policy_network.h をArduinoスケッチ側に配置して使用します。
-
+生成した `policy_network.h` をArduinoスケッチ側に配置して使用します。
 
 ## Notes
 
