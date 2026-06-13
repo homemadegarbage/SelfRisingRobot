@@ -70,6 +70,7 @@ python export_policy_header.py robo1_getup_ppo.zip -o policy_network.h
 
 生成した policy_network.h をArduinoスケッチ側に配置して使用します。
 
+
 ## Notes
 
 - `robo1_getup_ppo.zip`は`robo1.xml`と`robo1_env.py`の環境定義に依存しています。
