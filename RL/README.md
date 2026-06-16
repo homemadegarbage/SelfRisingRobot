@@ -51,7 +51,18 @@ python eval_robo1_policy.py
 
 ## Training
 
-まずスクリプト動作から初期方策を事前学習します。
+`getup_reference.py` に定義した起き上がり教師データから初期方策を事前学習します。
+
+起き上がり軌道を再探索する場合は、以下を実行します。
+
+```powershell
+python search_all_getup.py
+```
+出力された `BEST_SEQ` または `REFERENCE_CANDIDATES` の配列を
+`getup_reference.py` の `getup_sequence_for_pose()` に反映します。
+
+
+教師データから初期方策を事前学習
 
 ```powershell
 python pretrain_robo1_from_scripted.py
