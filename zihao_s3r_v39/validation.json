@@ -1,0 +1,47 @@
+{
+  "policy_parity": [
+    {
+      "model": "recovery_ppo.zip",
+      "header": "recovery_network.h",
+      "observations": 2000,
+      "max_raw_action_error": 9.5367431640625e-07
+    },
+    {
+      "model": "walk_residual_ppo.zip",
+      "header": "policy_network.h",
+      "observations": 2000,
+      "max_raw_action_error": 2.86102294921875e-06
+    },
+    {
+      "model": "roll_bc.zip",
+      "header": "roll_controller.h",
+      "observations": 2000,
+      "max_raw_action_error": 4.76837158203125e-07
+    },
+    {
+      "model": "roll_sde.zip",
+      "header": "roll_controller.h",
+      "observations": 2000,
+      "max_raw_action_error": 3.814697265625e-06
+    }
+  ],
+  "author": "同济子豪兄",
+  "author_date": "2026-10-26",
+  "version": "V3.9",
+  "compile": {
+    "fqbn": "m5stack:esp32:m5stack_atoms3",
+    "core": "3.3.8",
+    "flash_bytes": 1419823,
+    "static_ram_bytes": 53252
+  },
+  "viewer_headless_check": "passed",
+  "web_javascript_syntax": "passed",
+  "checkpoint_original_members": "byte-identical to V3.8; added AUTHOR.txt only",
+  "viewer_native_window": "opened and closed normally in 3-second smoke check; Wi-Fi motion not re-tested",
+  "hardware_upload": {
+    "status": "flash hashes verified; V3.9 serial boot confirmed",
+    "imu_ready": true,
+    "serial_query_state": "watching",
+    "motion_test": "not performed in this release turn"
+  }
+}

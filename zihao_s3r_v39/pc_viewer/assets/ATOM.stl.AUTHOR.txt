@@ -1,0 +1,2 @@
+V3.9 版本集成作者：同济子豪兄 2026-10-26
+Original mesh: HomeMadeGarbage / SelfRisingRobot. Geometry unchanged.

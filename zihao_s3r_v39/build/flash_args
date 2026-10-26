@@ -1,0 +1,5 @@
+--flash-mode dio --flash-freq 80m --flash-size 8MB
+0x0 robo03_atom_s3r_v39.ino.bootloader.bin
+0x8000 robo03_atom_s3r_v39.ino.partitions.bin
+0xe000 boot_app0.bin
+0x10000 robo03_atom_s3r_v39.ino.bin

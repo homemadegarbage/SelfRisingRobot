@@ -1,0 +1,3 @@
+发布作者：同济子豪兄 2026-10-26
+Version: V3.9
+Applies to this firmware build package. SDK boot components retain their original authorship.

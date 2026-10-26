@@ -1,0 +1,5 @@
+# 作者：同济子豪兄 2026-10-26 | RoBoBo V3.9
+.venv/
+__pycache__/
+.DS_Store
+*.pyc
